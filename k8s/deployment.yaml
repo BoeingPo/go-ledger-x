@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ledger-service
+  namespace: ledger-x
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ledger-service
+  template:
+    metadata:
+      labels:
+        app: ledger-service
+    spec:
+      containers:
+        - name: ledger-service
+          image: your-registry/ledger-service:latest  # CI updates this tag
+          ports:
+            - containerPort: 8081
+          envFrom:
+            - configMapRef:
+                name: ledger-service-config
+            - secretRef:
+                name: ledger-service-secrets
+          resources:
+            requests:
+              cpu: 100m
+              memory: 128Mi
+            limits:
+              cpu: 500m
+              memory: 256Mi
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8081
+            initialDelaySeconds: 15
+            periodSeconds: 20

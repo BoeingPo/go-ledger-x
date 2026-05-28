@@ -1,0 +1,16 @@
+# Minimal PostgreSQL for minikube local dev — no persistence, small resources.
+auth:
+  postgresPassword: "localpass"
+  username: "ledgerx"
+  password: "ledgerpass"
+  database: "ledgerx"
+primary:
+  persistence:
+    enabled: false
+  resources:
+    requests:
+      cpu: 100m
+      memory: 256Mi
+    limits:
+      cpu: 500m
+      memory: 512Mi

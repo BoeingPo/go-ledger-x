@@ -1,0 +1,26 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ledger-service
+  namespace: ledger-x
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    # Uncomment after providing domain + cert-manager is installed:
+    # cert-manager.io/cluster-issuer: "letsencrypt-prod"
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "DOMAIN_PLACEHOLDER"  # replace with your domain, e.g. api.example.com
+      http:
+        paths:
+          - path: /api/ledger(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: ledger-service
+                port:
+                  number: 80
+  # tls:
+  #   - hosts:
+  #       - api.example.com
+  #     secretName: ledger-service-tls

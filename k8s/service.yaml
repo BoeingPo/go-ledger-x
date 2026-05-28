@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: ledger-service
+  namespace: ledger-x
+spec:
+  selector:
+    app: ledger-service
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8081

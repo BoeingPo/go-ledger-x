@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ledger-service-config
+  namespace: ledger-x
+data:
+  KAFKA_BROKERS: "kafka.ledger-x.svc.cluster.local:9092"
+  LISTEN_ADDR:   ":8081"

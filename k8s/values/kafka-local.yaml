@@ -1,0 +1,13 @@
+# Single-broker Kafka (KRaft mode) for minikube local dev — no persistence.
+kraft:
+  enabled: true
+replicaCount: 1
+persistence:
+  enabled: false
+resources:
+  requests:
+    cpu: 200m
+    memory: 512Mi
+  limits:
+    cpu: 1000m
+    memory: 1Gi
