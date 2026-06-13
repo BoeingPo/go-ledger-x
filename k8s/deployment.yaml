@@ -4,7 +4,7 @@ metadata:
   name: ledger-service
   namespace: ledger-x
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: ledger-service
