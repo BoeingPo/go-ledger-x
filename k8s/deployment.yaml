@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: ledger-service
-          image: your-registry/ledger-service:latest  # CI updates this tag
+          image: boeingpo/ledger-service:latest
           ports:
             - containerPort: 8081
           envFrom:
