@@ -10,8 +10,7 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - host: "DOMAIN_PLACEHOLDER"  # replace with your domain, e.g. api.example.com
-      http:
+    - http:
         paths:
           - path: /api/ledger(/|$)(.*)
             pathType: ImplementationSpecific
