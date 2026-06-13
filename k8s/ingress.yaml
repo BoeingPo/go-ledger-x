@@ -10,7 +10,8 @@ metadata:
 spec:
   ingressClassName: nginx
   rules:
-    - http:
+    - host: "api-bo.k3s.porrapatbo.site"
+      http:
         paths:
           - path: /api/ledger(/|$)(.*)
             pathType: ImplementationSpecific
